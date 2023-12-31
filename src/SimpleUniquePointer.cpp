@@ -3,15 +3,15 @@ template<class T>
 class SimpleUniquePointer {
 public:
     SimpleUniquePointer() = default;
-    SimpleUniquePointer(const SimpleUniquePointer &) = delete;
-    SimpleUniquePointer &operator=(const SimpleUniquePointer &) = delete;
+    SimpleUniquePointer(const SimpleUniquePointer& ) = delete;
+    SimpleUniquePointer &operator=(const SimpleUniquePointer& ) = delete;
 
-    SimpleUniquePointer(SimpleUniquePointer &&otherPtr) noexcept
+    SimpleUniquePointer(SimpleUniquePointer&& otherPtr) noexcept
             : _pointer{otherPtr._pointer} {
         otherPtr._pointer = nullptr;
     }
 
-    SimpleUniquePointer &operator=(SimpleUniquePointer &&otherPtr) noexcept {
+    SimpleUniquePointer &operator=(SimpleUniquePointer&& otherPtr) noexcept {
         if (_pointer)
             delete _pointer;
 
@@ -21,7 +21,7 @@ public:
         return *this;
     }
 
-    SimpleUniquePointer(T *pointer) {
+    SimpleUniquePointer(T* pointer) {
         _pointer = pointer;
     }
 
@@ -35,5 +35,5 @@ public:
     }
 
 private:
-    T *_pointer;
+    T* _pointer;
 };
