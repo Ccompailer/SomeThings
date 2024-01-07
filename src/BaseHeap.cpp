@@ -19,7 +19,6 @@ struct Heap {
                 return _buckets[i].data;
             }
         }
-
         throw std::bad_alloc {};
     }
 
