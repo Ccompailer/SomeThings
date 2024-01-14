@@ -1,20 +1,35 @@
 #include "./NarrowCaster.cpp"
 #include <iostream>
 
-template<typename From>
-using ShortCaster = NarrowCaster<short, From>;
-float Test(int, float);
+struct LambdaFactory {
+    LambdaFactory(char in) : _toCount{in}, _tally{} {
+
+    }
+
+    auto MakeLambda() {
+        return [this](const char* str) {
+            size_t index{}, result{};
+
+            while (str[index]) {
+                if (str[index] == _toCount)
+                    ++result;
+                ++index;
+            }
+
+            _tally += result;
+            return result;
+        };
+    }
+
+private:
+    const char _toCount;
+    size_t _tally;
+};
 
 int main() {
-    int five = 5;
-
-    using TestPointer = float (*) (int, float);
-
-    TestPointer pointer = Test;
-    ShortCaster<int> caster;
-    auto testCast = caster.Cast(five);
-    std::cout << typeid(testCast).name() << "\n";
-    std::cout << pointer(5, 5.1f);
+    LambdaFactory lambda {'s'};
+    auto lamb = lambda.MakeLambda();
+    std::cout << lamb("Tests");
     return 0;
 }
 
