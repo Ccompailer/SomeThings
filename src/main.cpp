@@ -26,10 +26,13 @@ private:
     size_t _tally;
 };
 
-int main() {
-    LambdaFactory lambda {'s'};
-    auto lamb = lambda.MakeLambda();
-    std::cout << lamb("Tests");
+int main(int argc, char** argv) {
+    printf("Arguments: %d\n", argc);
+
+    for (size_t i{}; i < argc; ++i) {
+        printf("%zu: %s\n", i, argv[i]);
+    }
+    
     return 0;
 }
 
