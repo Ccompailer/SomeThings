@@ -17,6 +17,7 @@ struct LambdaFactory {
             }
 
             _tally += result;
+
             return result;
         };
     }
