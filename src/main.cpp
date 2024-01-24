@@ -17,6 +17,7 @@ struct LambdaFactory {
             }
 
             _tally += result;
+
             return result;
         };
     }
@@ -27,6 +28,7 @@ private:
 };
 
 int main(int argc, char** argv) {
+
     printf("Arguments: %d\n", argc);
 
     for (size_t i{}; i < argc; ++i) {
