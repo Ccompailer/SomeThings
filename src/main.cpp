@@ -1,5 +1,5 @@
 #include "./NarrowCaster.cpp"
-#include <iostream>
+#include <tuple>
 
 struct LambdaFactory {
     LambdaFactory(char in) : _toCount{in}, _tally{} {
@@ -7,6 +7,16 @@ struct LambdaFactory {
     }
 
     auto MakeLambda() {
+
+        float floatTest = 1.11f;
+        void* testVoidPtr = nullptr;
+        float* floatPtr = &floatTest;
+
+        auto testTuple = std::tuple<int, float*, std::string, double, void*> {5, floatPtr, "Test", 0.06, testVoidPtr};
+
+
+        auto response = get<float*>(testTuple);
+
         return [this](const char* str) {
             size_t index{}, result{};
 
