@@ -17,6 +17,8 @@ struct LambdaFactory {
 
         auto response = get<float*>(testTuple);
 
+        response = nullptr;
+
         return [this](const char* str) {
             size_t index{}, result{};
 
