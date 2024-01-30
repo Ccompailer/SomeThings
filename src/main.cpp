@@ -14,11 +14,6 @@ struct LambdaFactory {
 
         auto testTuple = std::tuple<int, float*, std::string, double, void*> {5, floatPtr, "Test", 0.06, testVoidPtr};
 
-
-        auto response = get<float*>(testTuple);
-
-        response = nullptr;
-
         return [this](const char* str) {
             size_t index{}, result{};
 
