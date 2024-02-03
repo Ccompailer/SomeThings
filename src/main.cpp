@@ -34,6 +34,10 @@ private:
     size_t _tally;
 };
 
+float Test(int a, float b) {
+    return static_cast<float>(a) + b;
+}
+
 int main(int argc, char** argv) {
 
     printf("Arguments: %d\n", argc);
@@ -41,10 +45,8 @@ int main(int argc, char** argv) {
     for (size_t i{}; i < argc; ++i) {
         printf("%zu: %s\n", i, argv[i]);
     }
-    
-    return 0;
-}
 
-float Test(int a, float b) {
-    return static_cast<float>(a) + b;
+    Test(5, 5.2f);
+
+    return 0;
 }
